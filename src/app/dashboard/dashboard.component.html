@@ -1,8 +1,8 @@
-<h2>Top Items</h2>
+<h2>Top 5 Items</h2>
 <div class="top-items">
-  <a *ngFor="let item of topItems" class="col-1-4">
-    <div class="item-block">
-      <span class="item-text">{{item.name}}</span>
-    </div>
+  <a *ngFor="let item of topItems"
+     class="item-block"
+     routerLink="/detail/{{item.id}}">
+    <span class="item-text">{{item.name}}</span>
   </a>
 </div>

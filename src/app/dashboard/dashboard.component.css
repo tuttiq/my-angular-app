@@ -3,12 +3,21 @@
   padding: 8px;
   margin: 8px;
   text-align: center;
+  text-decoration: none;
   color: #eee;
-  max-height: 120px;
   min-width: 120px;
   background-color: #607d8b;
   border-radius: 8px;
 }
+
+.item-block:first-child {
+  margin-left: 0;
+}
+
+.item-block:last-child {
+  margin-right: 0;
+}
+
 .item-block:hover {
   background-color: #eee;
   cursor: pointer;

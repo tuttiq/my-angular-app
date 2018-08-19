@@ -19,6 +19,12 @@ export class ItemsService {
 
   getTopItems(): Observable<Item[]> {
     this.messageService.add('ItemsService: fetched top items');
-    return of(ITEMS.slice(1, 5))
+    return of(ITEMS.slice(0, 5))
+  }
+
+  getItem(id: number): Observable<Item> {
+    // TODO: send the message _after_ fetching the item
+    this.messageService.add(`ItemsService: fetched item id=${id}`);
+    return of(ITEMS.find(item => item.id === id));
   }
 }
