@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Item } from './item';
 import { ITEMS } from './mock-data';
 
@@ -8,7 +9,7 @@ import { ITEMS } from './mock-data';
 export class ItemsService {
   constructor() { }
 
-  getItems(): Item[] {
-    return ITEMS;
+  getItems(): Observable<Item[]> {
+    return of(ITEMS);
   }
 }
