@@ -1,7 +1,10 @@
 <h2>My TODO list</h2>
 <ul class="todo-list">
-  <li *ngFor="let item of items" (click)="onSelect(item)">
-    <span class="item">{{item.id}}</span> {{item.name}}
+  <li *ngFor="let item of items"
+      [class.selected]="item === selectedItem"
+      (click)="onSelect(item)">
+    <span class="item-badge">{{item.id}}</span> 
+    <span class="item-text">{{item.name}}</span>
   </li>
 </ul>
 
