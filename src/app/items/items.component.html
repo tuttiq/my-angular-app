@@ -1,6 +1,15 @@
 <h2>My TODO list</h2>
 <ul class="todo-list">
-  <li *ngFor="let item of items">
+  <li *ngFor="let item of items" (click)="onSelect(item)">
     <span class="item">{{item.id}}</span> {{item.name}}
   </li>
 </ul>
+
+<div *ngIf="selectedItem">
+  <h2>Item {{selectedItem.id}}</h2>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="selectedItem.name" placeholder="name">
+    </label>
+  </div>
+</div>

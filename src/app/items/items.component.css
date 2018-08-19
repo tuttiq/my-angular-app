@@ -9,4 +9,5 @@ li {
   margin: 5px;
   background-color: #f4f2f0;
   border-radius: 8px;
+  cursor: pointer;
 }
