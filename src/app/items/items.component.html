@@ -1,1 +1,7 @@
-<p>{{item1}}</p>
+<h2>{{item1.name | uppercase}} Details</h2>
+<div><span>id: </span>{{item1.id}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="item1.name" placeholder="name">
+  </label>
+</div>
