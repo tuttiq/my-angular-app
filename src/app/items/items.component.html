@@ -9,10 +9,5 @@
 </ul>
 
 <div *ngIf="selectedItem">
-  <h2>Item {{selectedItem.id}}</h2>
-  <div>
-    <label>Name:
-      <input [(ngModel)]="selectedItem.name" placeholder="name">
-    </label>
-  </div>
+  <app-item-detail [item]="selectedItem"></app-item-detail>
 </div>
