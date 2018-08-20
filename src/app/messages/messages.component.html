@@ -2,6 +2,8 @@
   <h2>Messages</h2>
   <a class="clear" (click)="messageService.clear()">clear</a>
   <div *ngIf="messageService.messages.length">
-      <div *ngFor="let message of messageService.messages">{{message}}</div>
+      <div *ngFor="let message of messageService.messages">
+        {{message}}
+      </div>
   </div>
 </div>

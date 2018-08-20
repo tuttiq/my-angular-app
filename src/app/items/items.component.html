@@ -1,7 +1,6 @@
 <h2>My TODO list</h2>
 <ul class="todo-list">
-  <li *ngFor="let item of items"
-      routerLink="/detail/{{item.id}}">
+  <li *ngFor="let item of items" routerLink="/detail/{{item.id}}">
     <span class="item-badge">{{item.id}}</span> 
     <span class="item-text">{{item.name}}</span>
   </li>
