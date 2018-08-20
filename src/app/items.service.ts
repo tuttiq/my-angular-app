@@ -1,30 +1,51 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
 import { Item } from './item';
-import { ITEMS } from './mock-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemsService {
-  constructor(private messageService: MessageService) { }
+  itemsUrl = 'api/items'; // URL to web API
 
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) { }
+
+  /** GET items from the server */
   getItems(): Observable<Item[]> {
-    // TODO: send the message _after_ fetching the items
-    this.messageService.add('ItemsService: fetched items');
-    return of(ITEMS);
+    return this.http.get<Item[]>(this.itemsUrl).pipe(
+      tap(items => this.log('fetched items')),
+      catchError(this.handleError('getItems', []))
+    )
   }
 
-  getTopItems(): Observable<Item[]> {
-    this.messageService.add('ItemsService: fetched top items');
-    return of(ITEMS.slice(0, 5))
+  log(message: string): void {
+    this.messageService.add(message);
   }
 
-  getItem(id: number): Observable<Item> {
-    // TODO: send the message _after_ fetching the item
-    this.messageService.add(`ItemsService: fetched item id=${id}`);
-    return of(ITEMS.find(item => item.id === id));
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+  
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+  
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+  
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
   }
 }
