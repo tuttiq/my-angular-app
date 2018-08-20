@@ -22,5 +22,4 @@ export class MessagesComponent implements OnInit {
   clearMessages(): void {
     this.messageService.clear();
   }
-
 }
